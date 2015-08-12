@@ -11,7 +11,12 @@ $parentDirectory = dirname(__DIR__);
 
 $wordPressLoad = findWordPressLoad($parentDirectory);
 
-exit($wordPressLoad . "\n");
+if($wordPressLoad) {
+    require($wordPressLoad);
+}
+else
+    throw new Exception("Unable to find word press root");
+
 
 
 function findWordPressLoad($directory) {
